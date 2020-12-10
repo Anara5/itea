@@ -1,39 +1,52 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import classes from './NavigationBar.modules.css';
+import './NavigationBar.modules.css';
 
-class NavigationBar extends Component {
+function NavigationBar() {
+    const [click, setClick] = useState(false);
 
-    state = { clicked: false }
+    const handleClick = () => setClick(!click);
+    const closeMobileMenu = () => setClick(false);
 
-    handleClick = () => {
-        this.setState({ clicked: !this.state.clicked })
+        return (
+            <>
+            <nav className='NavigationBar'>
+
+                <div className='navbar-container'>
+
+                    <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
+                    ITEA
+                    </Link>
+
+                    <div onClick={handleClick} className="menu-icon">
+                        <i className={click ? 'fas fa-times' : 'fas fa-bars'}></i>
+                    </div>
+                    
+                    <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+                        <li className='nav-item'>
+                            <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+                            Home
+                            </Link>
+                        </li>
+                        <li className='nav-item'>
+                            <Link to='/services' className='nav-links' onClick={closeMobileMenu}>
+                                Services
+                            </Link>
+                        </li>
+                        <li className='nav-item'>
+                            <Link to='/contactus' className='nav-links' onClick={closeMobileMenu}>
+                                Contact Us
+                            </Link>
+                        </li>
+                    
+                    </ul>
+                
+                </div>
+           </nav>
+           </>
+        );
     }
 
-render() {
-
-    const currentLocation = this.state.currentLocation;
-
-    return (
-
-        <div className={classes.NavigationBarItems}>
-            <h1 className={classes.navbarLogo}>ITEA</h1>
-            
-            <div className={classes.nav}>
-                <div onClick={this.handleClick} className="menu-icon">
-                    <i className={this.state.clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
-                </div>
-
-                <div className={this.state.clicked ? 'nav-menu active' : 'nav-menu'}>
-                    <Link to='/' className={currentLocation === '/' ? 'link-selected' : 'link-item'}>HOME</Link>
-                    <Link to='/services' className={currentLocation === '/services' ? 'link-selected' : 'link-item'}>SERVICES</Link>
-                    <Link to='/contactus' className={currentLocation === '/contactus' ? 'link-selected' : 'link-item'}>CONTACT US</Link>
-                </div>
-                </div>
-           </div>
-        )
-    }
-}
 
 export default NavigationBar;
