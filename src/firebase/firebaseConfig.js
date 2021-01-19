@@ -3,7 +3,6 @@ import { firebase } from '@firebase/app';
 import 'firebase/auth'
 import 'firebase/database'
 import 'firebase/firestore';
-import Axios from 'axios';
 
 let config = {
     apiKey: "AIzaSyDhKDVfGsgrpGkhyi6SpWpQ1vN_tJWjpIg",
@@ -19,6 +18,4 @@ let config = {
   // Initialize Firebase
   firebase.initializeApp(config);
 
-  const db = firebase.firestore();
-
-  export {Axios, db};
+  export default firebase;

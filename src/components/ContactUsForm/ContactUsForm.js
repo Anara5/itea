@@ -2,7 +2,7 @@ import React from 'react';
 
 import './ContactUsForm.modules.css';
 
-import { db } from '../../firebase/firebaseConfig';
+import firebase from '../../firebase/firebaseConfig';
 
 
 class ContactUsForm extends React.Component {
@@ -38,16 +38,20 @@ class ContactUsForm extends React.Component {
         event.preventDefault(); 
         console.log(this.state);
 
-       db.collection('emails').add({
-            name: this.state.name,
-            email: this.state.email,
-            message: this.state.message,
-            time: new Date(),
-            }).then(() => {
-                alert('Your message has beeen submitted!');
-            }).catch((error) => {
-                alert(error.message);
-            })
+       firebase
+            .firestore()
+            .collection('emails')
+            .add({
+                id: this.email,
+                name: this.state.name,
+                email: this.state.email,
+                message: this.state.message,
+                time: new Date(),
+                }).then(() => {
+                    alert('Your message has beeen submitted!');
+                }).catch((error) => {
+                    alert(error.message);
+                })
             event.target.reset();
         };
 
