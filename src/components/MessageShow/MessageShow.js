@@ -19,14 +19,12 @@ function useMessages() {
                 setMessages(newMessages)
             })
     }, [])
-
     return messages
 }
 
 const Message = () => {
     const messages = useMessages();
 
-   
     return (
 
         <div className="MessageShow">
@@ -34,11 +32,11 @@ const Message = () => {
             <p>Your Message</p>
 
             <div>
-                {messages.map((email) => 
+                {messages.map((messageFromUser) => 
                     <div className='eachMessage'>
-                        <p>{email.id}</p>
-                        <p>{email.email}</p>
-                        <p>{email.message}</p>
+                        <p>{messageFromUser.id}</p>
+                        <p>{messageFromUser.name}</p>
+                        <p>{messageFromUser.message}</p>
                     </div>
                 )}
             </div>
