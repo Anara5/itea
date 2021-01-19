@@ -1,11 +1,17 @@
 import React from 'react';
-import classes from './ContactUs.modules.css';
+import ContactUsForm from '../../components/ContactUsForm/ContactUsForm';
+//import classes from './ContactUs.modules.css';
 
 const ContactUs = () => {
     return (
         <div>
-            Contact us form
-            Database will be used
+            <div>
+                Contact us form
+                Database will be used
+            </div>
+
+            <ContactUsForm />
+
         </div>
     )
 }

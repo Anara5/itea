@@ -8,7 +8,7 @@ const Home = () => {
 
             {/*<img src={bridge} className={classes.BridgePhoto}></img>*/}
             
-            <div classname={classes.HomeText}>
+            <div className={classes.HomeText}>
                 there will be a homepage info.
             </div>
             
