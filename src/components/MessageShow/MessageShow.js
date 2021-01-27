@@ -4,8 +4,10 @@ import './MessageShow.css';
 
 import firebase from '../../firebase/firebaseConfig';
 
+
 function useMessages() {
-    const [messages, setMessages] = useState([])
+
+    const [messages, setMessages] = useState([]);
 
     useEffect(() => {
         firebase
@@ -16,33 +18,48 @@ function useMessages() {
                     id: doc.id,
                     ...doc.data()
                 }))
-                setMessages(newMessages)
+                setMessages(newMessages);
             })
     }, [])
     return messages
 }
 
-const Message = () => {
+const Message = ({id}) => {
+    
     const messages = useMessages();
+
+    messages.find((message) => message.id===id);
 
     return (
 
-        <div className="MessageShow">
+        <div>
 
-            <p>Your Message</p>
+        {messages.length<1 ? <p>Message is loading from database ...</p> : <p>Your Message</p> }
 
-            <div>
-                {messages.map((messageFromUser) => 
-                    <div className='eachMessage'>
-                        <p>{messageFromUser.id}</p>
-                        <p>{messageFromUser.name}</p>
-                        <p>{messageFromUser.message}</p>
-                    </div>
-                )}
+            <div className='MessageShow'>
+
+            {messages.map((message, i) =>
+
+                message.id === id ?
+
+                <div className='eachMessage' key={i}>
+
+                    <p>{message.id}</p>
+                    <p>{message.name}</p>
+                    <p>{message.message}</p>
+
+                    <button className='edit'
+                        
+                    >EDIT</button>
+
+                    <button className='delete'
+                        
+                    >DELETE</button>
+
+                </div> : null )}
             </div>
-
+            
         </div>
-
     )
 }
 

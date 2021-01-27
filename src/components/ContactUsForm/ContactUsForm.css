@@ -1,16 +1,14 @@
 .Form {
-    display: table;
-    margin-top: 40px;
-    margin-left: 20%;
-    position: flex;
-    max-width: 40%;
+    max-width: 60%;
+    display: flex;
+    margin: 0 auto;
+    margin-top: 5%;
 }
 
     input,
     textarea {
         font: 16px Helvetica, Arial, sans-serif;
         box-sizing: border-box;
-        
         padding: 10px;
         margin-bottom: 7%;
         width: 100%;

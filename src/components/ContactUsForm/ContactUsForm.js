@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './ContactUsForm.modules.css';
+import './ContactUsForm.css';
 
 import firebase from '../../firebase/firebaseConfig';
 
@@ -42,18 +42,24 @@ class ContactUsForm extends React.Component {
             .firestore()
             .collection('emails')
             .add({
-                id: this.email,
+                id: this.state.email,
                 name: this.state.name,
                 email: this.state.email,
                 message: this.state.message,
                 time: new Date(),
                 }).then(() => {
+                    localStorage.setItem('itea-user-id', this.state.email);
+                    
                     alert('Your message has beeen submitted!');
                 }).catch((error) => {
                     alert(error.message);
                 })
             event.target.reset();
+
+            this.props.updateId(this.state.email);
         };
+
+
 
     render() {
 

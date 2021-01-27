@@ -1,14 +1,14 @@
 import React from 'react';
-import classes from './Home.modules.css';
+import './Home.css';
 //import bridge from '../../images/Homepage/bridge.jpg';
 
 const Home = () => {
     return (
-        <div className={classes.Homepage}>
+        <div className='Homepage'>
 
             {/*<img src={bridge} className={classes.BridgePhoto}></img>*/}
             
-            <div className={classes.HomeText}>
+            <div className='HomeText'>
                 there will be a homepage info.
             </div>
             

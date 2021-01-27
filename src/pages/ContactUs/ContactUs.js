@@ -1,18 +1,29 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import ContactUsForm from '../../components/ContactUsForm/ContactUsForm';
 import MessageShow from '../../components/MessageShow/MessageShow';
-//import classes from './ContactUs.modules.css';
+
+import './ContactUs.css';
 
 const ContactUs = () => {
+    const [id, setId] = useState('');
+    const updateIdHandle = (id) => setId(id);
+
+    useEffect(() => {
+        const lastUserId = localStorage.getItem('itea-user-id');
+        if (lastUserId)
+        setId(lastUserId);
+        }, []);
+
     return (
-        <div>
+
+        <div className='ContactUsPage'>
             <div>
                 Contact us form with Firebase
             </div>
 
-            <ContactUsForm />
+            <ContactUsForm updateId={updateIdHandle} />
 
-            <MessageShow />
+            <MessageShow id={id} />
 
         </div>
     )
