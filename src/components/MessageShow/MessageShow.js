@@ -32,11 +32,11 @@ const Message = ({id}) => {
 
     return (
 
-        <div>
+        <div  className='MessageShow'>
 
-        {messages.length<1 ? <p>Message is loading from database ...</p> : <p>Your Message</p> }
+        {messages.length<1 ? <p>Message is loading from database ...</p> : <h2>Your Message</h2> }
 
-            <div className='MessageShow'>
+            <div>
 
             {messages.map((message, i) =>
 

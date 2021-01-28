@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import './NavigationBar.css';
 
 function NavigationBar() {
+    
     const [click, setClick] = useState(false);
 
     const handleClick = () => setClick(!click);

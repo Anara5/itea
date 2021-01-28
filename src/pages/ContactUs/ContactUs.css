@@ -1,5 +1,12 @@
 .ContactUsPage {
-    height: 10em;
-    position: flex;
-    margin: 0 auto;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background: rgb(253, 253, 253);
+    padding-top: 10%;
+}
+
+h2 {
+    text-align: center;
 }

@@ -14,11 +14,14 @@ const App = () => {
     <>
       <NavigationBar currentLocation={location.pathname} />
       
+      <div>
         <Switch>
           <Route path='/services' render={() => <Services />} />
           <Route path='/contactus' render={() => <ContactUs />} />
           <Route exact path='/' render={() => <Home />} />
         </Switch>
+      </div>
+
     </>
   );
 };
