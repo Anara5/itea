@@ -24,6 +24,22 @@ function useMessages() {
     return messages
 }
 
+function deleteMessage(i) {
+
+        firebase
+            .firestore()
+            .collection('emails')
+            .get().then(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
+                doc.ref.delete(i).then(function() {
+                    console.log("Document successfully deleted!");
+                }).catch(function(error) {
+                    console.error("Error removing document: ", error);
+                });
+            })
+    })
+}
+
 const Message = ({id}) => {
     
     const messages = useMessages();
@@ -34,7 +50,7 @@ const Message = ({id}) => {
 
         <div  className='MessageShow'>
 
-        {messages.length<1 ? <p>Message is loading from database ...</p> : <h2>Your Message</h2> }
+        {messages.length < 1 ? <p>Message is loading from database ...</p> : <h2>Your Message</h2> }
 
             <div>
 
@@ -53,7 +69,7 @@ const Message = ({id}) => {
                     >EDIT</button>
 
                     <button className='delete'
-                        
+                        onClick={() => deleteMessage(message.i)}
                     >DELETE</button>
 
                 </div> : null )}

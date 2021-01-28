@@ -6,6 +6,7 @@ import Footer from '../../components/Footer/Footer';
 import './ContactUs.css';
 
 const ContactUs = () => {
+    
     const [id, setId] = useState('');
     const updateIdHandle = (id) => setId(id);
 
@@ -20,7 +21,7 @@ const ContactUs = () => {
         <div className='ContactUsPage'>
         
             <h2>
-                Contact us form with Firebase
+                Contact us form
             </h2>
 
             <ContactUsForm updateId={updateIdHandle} />
