@@ -24,19 +24,19 @@ function useMessages() {
     return messages
 }
 
-function deleteMessage(i) {
+function deleteMessage(id) {
 
-        firebase
-            .firestore()
-            .collection('emails')
-            .get().then(function(querySnapshot) {
-                querySnapshot.forEach(function(doc) {
-                doc.ref.delete(i).then(function() {
-                    console.log("Document successfully deleted!");
-                }).catch(function(error) {
-                    console.error("Error removing document: ", error);
-                });
-            })
+    firebase
+        .firestore()
+        .collection('emails')
+        .get().then(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+            doc.ref.delete(id).then(function() {
+                console.log("Document successfully deleted!");
+            }).catch(function(error) {
+                console.error("Error removing document: ", error);
+            });
+        })
     })
 }
 
@@ -69,7 +69,7 @@ const Message = ({id}) => {
                     >EDIT</button>
 
                     <button className='delete'
-                        onClick={() => deleteMessage(message.i)}
+                        onClick={() => deleteMessage(message.id)}
                     >DELETE</button>
 
                 </div> : null )}
