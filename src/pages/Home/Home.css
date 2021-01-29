@@ -4,6 +4,7 @@
     align-items: center;
     width: 100%;
     background: rgb(253, 253, 253);
+    min-width: 70%;
 }
 
 .header {
@@ -25,7 +26,7 @@
     -ms-filter: grayscale(100%);
     -o-filter: grayscale(100%);
     filter: grayscale(100%);
-    filter: gray; /* IE 6-9 */
+    filter: gray;
 }
 
 .homeText {
@@ -38,4 +39,38 @@ h1 {
     color: rgb(2, 2, 70);
     font-size: 3em;
     text-align: center;
+}
+
+h3 {
+    color: rgb(2, 2, 70);
+    font-size: 1.5em;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    margin: 20%;
+}
+
+@media screen and (max-width: 600px) {
+
+    .header {
+        height: 70vh;
+    }
+
+    .header img {
+        height: 80%;
+    }
+
+    .homeText {
+        padding: 10%;
+        font-size: 1rem;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+        margin: 20%;
+    }
 }

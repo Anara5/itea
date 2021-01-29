@@ -1,7 +1,7 @@
 .Footer {
     background: rgb(0, 0, 0);
     height: 400px;
-    display:grid;
+    display: grid;
     justify-content: center;
     font-size: 1rem;
     position: static;
@@ -31,4 +31,15 @@
 
 a:hover {
     color: rgb(134, 134, 134);
+}
+
+@media screen and (max-width: 600px) {
+    .Footer {
+        font-size: 0.8rem;
+        height: 80%;
+    }
+
+    .adress {
+        font-size: 0.8rem;
+    }
 }

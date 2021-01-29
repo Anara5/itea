@@ -10,10 +10,12 @@ const Home = () => {
 
         <div className='Homepage'>
 
-            <div className='header'>
+            <header className='header'>
                 <img src={bridge} className='bridgePhoto' alt='homepage'></img>
-            </div>
-            
+
+                <h3>our ITEA and text...</h3>
+
+            </header>
             
             <div className='homeText'>
                 <h1>ITEA</h1>

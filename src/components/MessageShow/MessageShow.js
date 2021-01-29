@@ -4,7 +4,6 @@ import './MessageShow.css';
 
 import firebase from '../../firebase/firebaseConfig';
 
-
 function useMessages() {
 
     const [messages, setMessages] = useState([]);
@@ -26,19 +25,18 @@ function useMessages() {
 
 function deleteMessage(id) {
 
+    alert('Yor message will be deleted!');
+
     firebase
         .firestore()
         .collection('emails')
-        .get().then(function(querySnapshot) {
-            querySnapshot.forEach(function(doc) {
-            doc.ref.delete(id).then(function() {
-                console.log("Document successfully deleted!");
-            }).catch(function(error) {
-                console.error("Error removing document: ", error);
-            });
-        })
-    })
+        .where('email', '==', id).get()
+        .then(querySnapshot => {
+            querySnapshot.docs[0].ref.delete();
+        }
+    )
 }
+
 
 const Message = ({id}) => {
     

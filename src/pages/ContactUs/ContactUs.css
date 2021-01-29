@@ -9,4 +9,17 @@
 
 h2 {
     text-align: center;
+    font-size: 1.5rem;
+}
+
+@media screen and (max-width: 600px) {
+
+    .ContactUsPage {
+        padding-top: 5%;
+    }
+
+    h2 {
+        font-size: 1.1rem;
+        margin: 10%;
+    }
 }

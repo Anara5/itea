@@ -12,6 +12,7 @@ const App = () => {
 
   return (
     <>
+    
       <NavigationBar currentLocation={location.pathname} />
       
       <div>

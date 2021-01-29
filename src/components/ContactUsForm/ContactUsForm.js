@@ -50,16 +50,15 @@ class ContactUsForm extends React.Component {
                 }).then(() => {
                     localStorage.setItem('itea-user-id', this.state.email);
                     
-                    alert('Your message has beeen submitted!');
+                    //alert('Your message has beeen submitted!');
                 }).catch((error) => {
                     alert(error.message);
                 })
+                
             event.target.reset();
 
             this.props.updateId(this.state.email);
         };
-
-
 
     render() {
 
