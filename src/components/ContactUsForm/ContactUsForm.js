@@ -1,5 +1,4 @@
 import React from 'react';
-
 import './ContactUsForm.css';
 
 import firebase from '../../firebase/firebaseConfig';
@@ -22,7 +21,6 @@ class ContactUsForm extends React.Component {
     
       onNameChange(event) {
         this.setState({name: event.target.value})
-        console.log(event.target.value)
       }
     
       onEmailChange(event) {
@@ -36,7 +34,6 @@ class ContactUsForm extends React.Component {
       
       handleSubmit(event) {
         event.preventDefault(); 
-        console.log(this.state);
 
        firebase
             .firestore()
@@ -50,11 +47,11 @@ class ContactUsForm extends React.Component {
                 }).then(() => {
                     localStorage.setItem('itea-user-id', this.state.email);
                     
-                    //alert('Your message has beeen submitted!');
+                    alert('Your message has beeen submitted!');
                 }).catch((error) => {
                     alert(error.message);
                 })
-                
+
             event.target.reset();
 
             this.props.updateId(this.state.email);

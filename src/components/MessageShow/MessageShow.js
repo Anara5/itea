@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-
 import './MessageShow.css';
 
 import firebase from '../../firebase/firebaseConfig';
+import EditMessageForm from '../EditMessageForm/EditMessageForm';
+//import EditMessageForm from '../EditMessageForm/EditMessageForm';
+
 
 function useMessages() {
 
@@ -24,9 +26,7 @@ function useMessages() {
 }
 
 function deleteMessage(id) {
-
-    alert('Yor message will be deleted!');
-
+    alert('Your message will be deleted!');
     firebase
         .firestore()
         .collection('emails')
@@ -41,8 +41,15 @@ function deleteMessage(id) {
 const Message = ({id}) => {
     
     const messages = useMessages();
-
     messages.find((message) => message.id===id);
+
+    const [openEditForm, setOpenEditForm] = React.useState(false);
+    const [message, setMessage] = React.useState([])
+    
+    const visibleForm = () => {
+        setOpenEditForm(true)
+        setMessage(message)
+    }
 
     return (
 
@@ -63,16 +70,18 @@ const Message = ({id}) => {
                     <p>{message.message}</p>
 
                     <button className='edit'
-                        
+                        onClick={visibleForm}
                     >EDIT</button>
 
                     <button className='delete'
                         onClick={() => deleteMessage(message.id)}
                     >DELETE</button>
+                    
+                </div> : null ) }
 
-                </div> : null )}
-            </div>
-            
+                {openEditForm && <EditMessageForm />}
+
+            </div>                        
         </div>
     )
 }
