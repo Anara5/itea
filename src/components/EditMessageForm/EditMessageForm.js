@@ -5,7 +5,7 @@ import firebase from '../../firebase/firebaseConfig';
 export default class EditMessageForm extends Component {
 
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             message: ''
         };
@@ -18,34 +18,32 @@ export default class EditMessageForm extends Component {
     };
 
     onChangeInputMessage = (e) => {
-        this.setState({message: e.target.value})
+        this.setState({message: e.target.value});
     };
-
-    editMessage = (id) => {
+    
+    editMessage = (e, message, docId) => {
+        e.preventDefault();
+        alert(message + ' ' + docId);
 
         firebase
             .firestore()
             .collection('emails')
-            .where('email', '==', id)
-            .then(querySnapshot => {
-                querySnapshot.docs[0].ref.set({
-                message: this.state.message
+            .where('email', '==', docId)
+            .get()
+            .then((querySnapshot) => {
+                querySnapshot.docs[0].ref.update({ message: message });
             });
-            })
-
-            this.props.updateId(this.state.id);
         }
 
     render() {
         return (
             <div>
-                <form>
+                <form onSubmit={(e) => this.editMessage(e, this.state.message, this.props.id)}>
                     <textarea type='text'
                             value = {this.state.message}
                             onChange = {this.onChangeInputMessage} />
 
-                    <button
-                        onClick={() => {this.editMessage(this.state.message)}}>
+                    <button type='submit'>
                         Save
                     </button>
                 </form>

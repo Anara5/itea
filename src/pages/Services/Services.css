@@ -1,8 +1,27 @@
+.Services {
+    margin-top: 5%;
+    position: relative;
+    font-size: 1rem;
+    text-align: left;
+}
 
+h2 {
+    color: rgb(56, 56, 56);
+    font-size: 1rem;
+    text-align: center;
+}
 
+h3 {
+    margin-top: 10%;
+    margin-bottom: 5%;
+}
 
-
-@media screen and (max-width: 600px) {
-
-    
+.text {
+    font-size: 1rem;
+    text-align: left;
+    text-orientation: sideways;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 10%;
+    color: rgb(56, 56, 56);
 }

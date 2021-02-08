@@ -3,7 +3,6 @@ import './MessageShow.css';
 
 import firebase from '../../firebase/firebaseConfig';
 import EditMessageForm from '../EditMessageForm/EditMessageForm';
-//import EditMessageForm from '../EditMessageForm/EditMessageForm';
 
 
 function useMessages() {
@@ -44,11 +43,9 @@ const Message = ({id}) => {
     messages.find((message) => message.id===id);
 
     const [openEditForm, setOpenEditForm] = React.useState(false);
-    const [message, setMessage] = React.useState([])
     
     const visibleForm = () => {
         setOpenEditForm(true)
-        setMessage(message)
     }
 
     return (
@@ -77,9 +74,9 @@ const Message = ({id}) => {
                         onClick={() => deleteMessage(message.id)}
                     >DELETE</button>
                     
-                </div> : null ) }
+                </div> : null )}
 
-                {openEditForm && <EditMessageForm />}
+                {openEditForm && <EditMessageForm id={id} />}
 
             </div>                        
         </div>
