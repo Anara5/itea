@@ -1,6 +1,6 @@
 import React from 'react';
 import './Services.css';
-
+import software from '../../images/Homepage/software.jpg';
 import Footer from '../../components/Footer/Footer';
 
 const Services = () => {
@@ -38,6 +38,8 @@ const Services = () => {
             </div>
 
         </div>
+
+        <img src={software} className='software' alt='services'></img>
         
         <Footer />
 

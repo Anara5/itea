@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './MessageShow.css';
-
 import firebase from '../../firebase/firebaseConfig';
 import EditMessageForm from '../EditMessageForm/EditMessageForm';
-
 
 function useMessages() {
 
@@ -42,17 +40,24 @@ const Message = ({id}) => {
     const messages = useMessages();
     messages.find((message) => message.id===id);
 
-    const [openEditForm, setOpenEditForm] = React.useState(false);
-    
-    const visibleForm = () => {
-        setOpenEditForm(true)
+    const initialOpenEditForm = new Array(Message.length)
+    for (let val of initialOpenEditForm) val = false;
+
+    const [openEditForm, setOpenEditForm] = React.useState(initialOpenEditForm);
+
+    const visibleForm = ({i}) => {
+        setOpenEditForm(f => {
+            const f1 = [...f];
+            f[i] = true;
+            return f1;
+        });
     }
 
     return (
 
         <div  className='MessageShow'>
 
-        {messages.length < 1 ? <p>Message is loading from database ...</p> : <h2>Your Message</h2> }
+        {messages.length < 1 ? <p>Message is loading from database ...</p> : <h2>Your Messages</h2> }
 
             <div>
 
@@ -64,10 +69,12 @@ const Message = ({id}) => {
 
                     <p>{message.id}</p>
                     <p>{message.name}</p>
-                    <p>{message.message}</p>
+                    <div className='messageShow'>{message.message}</div>
+
+                    {openEditForm && <EditMessageForm id={id} />}
 
                     <button className='edit'
-                        onClick={visibleForm}
+                    onClick={() => visibleForm(i)}
                     >EDIT</button>
 
                     <button className='delete'
@@ -75,8 +82,6 @@ const Message = ({id}) => {
                     >DELETE</button>
                     
                 </div> : null )}
-
-                {openEditForm && <EditMessageForm id={id} />}
 
             </div>                        
         </div>

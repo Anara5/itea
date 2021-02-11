@@ -1,7 +1,6 @@
 import React from 'react';
 import './Home.css';
 import bridge from '../../images/Homepage/bridge.jpg';
-
 import Footer from '../../components/Footer/Footer';
 
 const Home = () => {

@@ -2,21 +2,31 @@
     max-width: 60%;
     display: flex;
     margin: 0 auto;
-    margin-top: 5%;
+    margin-top: 3%;
 }
 
-    input,
-    textarea {
-        font: 16px Helvetica, Arial, sans-serif;
-        box-sizing: border-box;
-        padding: 10px;
-        margin-bottom: 7%;
-        width: 100%;
-        min-width: 40%;
-        outline: none;
-        transition: all 0.2s ease-in-out;
-    }
+input,
+textarea {
+    font: 16px Helvetica, Arial, sans-serif;
+    box-sizing: border-box;
+    padding: 10px;
+    margin-bottom: 5%;
+    width: 100%;
+    min-width: 40%;
+    outline: none;
+    font-size: 1.2rem;
+    transition: all 0.2s ease-in-out;
+}
 
-    .nameInput {
-        display: flex;
-    }
+.nameInput {
+    display: flex;
+}
+
+.sendbutton {
+    background-color: rgb(84, 84, 85);
+    border-radius: 1rem;
+    color: rgb(255, 255, 255);
+    padding: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+}

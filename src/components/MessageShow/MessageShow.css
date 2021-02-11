@@ -23,12 +23,24 @@
     float: right;
     padding: 3px;
     margin: 3%;
+    background-color: rgb(243, 243, 253);
+    border-radius: 0.5rem;
+    color: rgb(2, 5, 56);
+    padding: 0.3rem;
+    font-size: 1rem;
+    cursor: pointer;
 }
 
 .delete {
     float: right;
     padding: 3px;
     margin: 3%;
+    background-color: rgb(243, 243, 253);
+    border-radius: 0.5rem;
+    color: rgb(2, 5, 56);
+    padding: 0.3rem;
+    font-size: 1rem;
+    cursor: pointer;
 }
 
 p {
@@ -36,6 +48,8 @@ p {
     margin-bottom: 10px;
 }
 
-@media screen and (max-width: 600px) {
-    
+.messageShow {
+    margin: 3%;
+    font-size: 1.5rem;
+    padding: 0.5rem;
 }

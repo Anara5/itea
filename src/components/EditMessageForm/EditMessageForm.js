@@ -1,6 +1,6 @@
 import React, { Component }  from 'react';
-
 import firebase from '../../firebase/firebaseConfig';
+import './EditMessageForm.css';
 
 export default class EditMessageForm extends Component {
 
@@ -37,13 +37,13 @@ export default class EditMessageForm extends Component {
 
     render() {
         return (
-            <div>
+            <div className='EditMessageForm'>
                 <form onSubmit={(e) => this.editMessage(e, this.state.message, this.props.id)}>
                     <textarea type='text'
                             value = {this.state.message}
                             onChange = {this.onChangeInputMessage} />
 
-                    <button type='submit'>
+                    <button type='submit' className='submit'>
                         Save
                     </button>
                 </form>

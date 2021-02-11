@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
 import './NavigationBar.css';
 
 function NavigationBar() {
@@ -48,6 +47,5 @@ function NavigationBar() {
            </>
         );
     }
-
 
 export default NavigationBar;

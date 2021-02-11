@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import ContactUsForm from '../../components/ContactUsForm/ContactUsForm';
 import MessageShow from '../../components/MessageShow/MessageShow';
 import Footer from '../../components/Footer/Footer';
-
 import './ContactUs.css';
 
 const ContactUs = () => {

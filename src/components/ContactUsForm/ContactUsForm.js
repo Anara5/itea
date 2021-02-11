@@ -1,6 +1,5 @@
 import React from 'react';
 import './ContactUsForm.css';
-
 import firebase from '../../firebase/firebaseConfig';
 
 
@@ -91,7 +90,7 @@ class ContactUsForm extends React.Component {
                         required
                     />
 
-                    <button>
+                    <button className='sendbutton'>
                         Send message
                     </button>
 

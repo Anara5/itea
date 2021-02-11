@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import icon from '../../images/Homepage/icons8-linkedin-2-30.png';
-
 import './Footer.css';
 
 const footer = () => {
