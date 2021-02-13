@@ -7,7 +7,7 @@ export default class EditMessageForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            message: ''
+            ...this.props.message
         };
     }
 
@@ -21,24 +21,29 @@ export default class EditMessageForm extends Component {
         this.setState({message: e.target.value});
     };
     
-    editMessage = (e, message, docId) => {
+    editMessage = (e) => {
         e.preventDefault();
-        alert(message + ' ' + docId);
+        alert('Would you like to save your changes!');
 
         firebase
             .firestore()
             .collection('emails')
-            .where('email', '==', docId)
+            .where('email', '==', this.state.id)
             .get()
             .then((querySnapshot) => {
-                querySnapshot.docs[0].ref.update({ message: message });
+                querySnapshot.docs[this.props.pos].ref.update({ message: this.state.message });
             });
+            this.props.onClosed(this.props.pos);
+        }
+
+        cancelMessage = () => {
+            this.props.onClosed(this.props.pos);
         }
 
     render() {
         return (
             <div className='EditMessageForm'>
-                <form onSubmit={(e) => this.editMessage(e, this.state.message, this.props.id)}>
+                <form onSubmit={(e) => this.editMessage(e)}>
                     <textarea type='text'
                             value = {this.state.message}
                             onChange = {this.onChangeInputMessage} />
@@ -46,6 +51,8 @@ export default class EditMessageForm extends Component {
                     <button type='submit' className='submit'>
                         Save
                     </button>
+
+                    <button onClick={this.cancelMessage} className='submit'>Cancel</button>
                 </form>
             </div>
         )

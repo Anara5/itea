@@ -34,7 +34,6 @@ function deleteMessage(id) {
     )
 }
 
-
 const Message = ({id}) => {
     
     const messages = useMessages();
@@ -45,10 +44,20 @@ const Message = ({id}) => {
 
     const [openEditForm, setOpenEditForm] = React.useState(initialOpenEditForm);
 
-    const visibleForm = ({i}) => {
+    let pos = 0;
+
+    const visibleForm = (i) => {
         setOpenEditForm(f => {
             const f1 = [...f];
-            f[i] = true;
+            f1[i] = true;
+            return f1;
+        });
+    }
+
+    const handlerClosed = (i) => {
+        setOpenEditForm(f => {
+            const f1 = [...f];
+            f1[i] = false;
             return f1;
         });
     }
@@ -61,29 +70,31 @@ const Message = ({id}) => {
 
             <div>
 
-            {messages.map((message, i) =>
+            {messages.map((message, i) => {
 
-                message.id === id ?
+                const openEditFormStatus = openEditForm[pos];
+                return (
+                    message.id === id ?
+                    <div className='eachMessage' key={i}>
 
-                <div className='eachMessage' key={i}>
+                        <p>{message.id}</p>
+                        <p>{message.name}</p>
+                        <div className='messageShow'>{message.message}</div>
 
-                    <p>{message.id}</p>
-                    <p>{message.name}</p>
-                    <div className='messageShow'>{message.message}</div>
+                        {openEditFormStatus && <EditMessageForm message={message} pos={pos} onClosed={handlerClosed} />}
 
-                    {openEditForm && <EditMessageForm id={id} />}
+                        <button className='edit'
+                            onClick={visibleForm.bind(null, pos++)}
+                        >EDIT</button>
 
-                    <button className='edit'
-                    onClick={() => visibleForm(i)}
-                    >EDIT</button>
-
-                    <button className='delete'
-                        onClick={() => deleteMessage(message.id)}
-                    >DELETE</button>
+                        <button className='delete'
+                            onClick={() => deleteMessage(message.id)}
+                        >DELETE</button>
                     
-                </div> : null )}
+                    </div> : null )})}
 
-            </div>                        
+            </div>      
+
         </div>
     )
 }
