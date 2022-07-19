@@ -4,7 +4,7 @@ import 'firebase/database'
 import 'firebase/firestore';
 
 let config = {
-    apiKey: "AIzaSyDhKDVfGsgrpGkhyi6SpWpQ1vN_tJWjpIg",
+    apiKey: "api-key",
     authDomain: "contact-2301.firebaseapp.com",
     databaseURL: "https://contact-2301-default-rtdb.firebaseio.com",
     projectId: "contact-2301",
